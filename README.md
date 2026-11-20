@@ -21,11 +21,11 @@ pnpm build      # output in dist/
 GitHub Actions (`.github/workflows/deploy.yml`) builds on every push to `main` and publishes `dist/`.
 In the repository settings, Pages → Source must be **GitHub Actions**.
 
-Address without a custom domain: `https://<org>.github.io/artlistv1rf/`.
+Address: `https://artlist.pics` (custom domain, `public/CNAME`).
 
-**Trap:** `vite.config.ts` sets `base: "/artlistv1rf/"`. When a custom domain is attached, switch
-`base` to `"/"` and add `public/CNAME` in the same commit. Doing one without the other leaves the
-site blank.
+**Trap:** `vite.config.ts` sets `base: "/"` and `public/CNAME` holds the domain. If the domain is
+removed, switch `base` back to `"/artlistv1rf/"` and delete `public/CNAME` in the same commit.
+Doing one without the other leaves the site blank.
 
 ## Where content lives
 
