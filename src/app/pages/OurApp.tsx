@@ -21,9 +21,7 @@ export default function OurApp() {
             </Reveal>
           </div>
           <Reveal className="hero__visual" delay={200}>
-            <div className="phone">
-              <img src={img("/images/phone-preview.webp")} alt="The app's generation preview screen" width={647} height={1400} />
-            </div>
+            <img className="device" src={img("/images/device-video.webp")} alt="The app's home screen" width={800} height={1635} />
           </Reveal>
         </div>
       </section>

@@ -444,22 +444,19 @@ h3,
 }
 .hero__stage {
   position: relative;
-  display: flex;
-  justify-content: center;
   margin-top: clamp(48px, 7vw, 88px);
-  height: clamp(420px, 56vw, 620px);
+  height: 640px;
 }
-.hero__stage .phone {
+.hero__stage .device {
   position: absolute;
   top: 0;
-}
-.phone--front {
   left: 50%;
+}
+.device--front {
   transform: translateX(-62%);
   z-index: 2;
 }
-.phone--back {
-  left: 50%;
+.device--back {
   transform: translateX(-18%) translateY(40px);
   opacity: 0.45; /* the back layer is more transparent, not darker */
   z-index: 1;
@@ -497,6 +494,13 @@ h3,
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Device mockups: real iPhone frames with transparent edges. No plate, no border, no shadow around. */
+.device {
+  width: min(300px, 74vw);
+  height: auto;
+  margin-inline: auto;
 }
 
 /* ── Sections ── */
@@ -560,7 +564,7 @@ h3,
   border-radius: 40px;
   background: radial-gradient(closest-side, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0) 80%);
 }
-.panel .phone {
+.panel .device {
   width: min(340px, 76vw);
 }
 
@@ -626,23 +630,15 @@ h3,
   font-size: 17px;
   line-height: 1.45;
 }
-.stack-card__icons {
+.styles-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin-top: 28px;
 }
-.stack-card__icons span {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 22px 8px;
-  border-radius: 24px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--text-2);
-  font-size: 14px;
+.styles-row img {
+  width: 100%;
+  height: auto;
 }
 
 /* 04 — mode cards with a mini prompt field */
@@ -701,7 +697,7 @@ h3,
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
-.showcase .phone {
+.showcase .device {
   width: min(320px, 100%);
 }
 
@@ -1249,9 +1245,6 @@ h3,
   .grid2 {
     grid-template-columns: 1fr;
   }
-  .stack-card__icons {
-    grid-template-columns: 1fr 1fr;
-  }
   .specs__row {
     grid-template-columns: 1fr;
     gap: 4px;
@@ -1262,11 +1255,17 @@ h3,
   .small {
     font-size: 15px;
   }
-  .phone--front {
+  .device--front {
     transform: translateX(-58%);
   }
+  .device--back {
+    transform: translateX(-34%) translateY(40px);
+  }
   .hero__stage {
-    height: 440px;
+    height: 560px;
+  }
+  .hero__stage .device {
+    width: min(260px, 66vw);
   }
   .float-cta {
     right: 14px;

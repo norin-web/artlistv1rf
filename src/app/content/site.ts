@@ -145,13 +145,6 @@ export const features = [
   { title: "Bring Memories Back to Life", text: "Animate an old photo into a short moving scene." },
 ];
 
-// Scene screens for the App page and the steps.
-export const scene = [
-  { title: "Write the prompt", text: "Describe the scene in plain words, or start from a preset.", shot: "/images/phone-create.webp" },
-  { title: "Add a reference", text: "Use a photo as a reference, a start frame or an end frame.", shot: "/images/phone-preview.webp" },
-  { title: "Pick a style", text: "Browse the style library and apply a look to any prompt.", shot: "/images/phone-styles.webp" },
-];
-
 export const steps = [
   { title: "Write a prompt", text: "Describe what you want to see, or pick a preset to begin." },
   { title: "Add references", text: "Attach a photo, a start frame or an end frame if you have one." },

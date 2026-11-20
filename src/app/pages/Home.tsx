@@ -1,4 +1,3 @@
-import { Film, Image as ImageIcon, Music, Palette } from "lucide-react";
 import Btn from "../components/Btn";
 import { FaqTabs } from "../components/Faq";
 import Reveal from "../components/Reveal";
@@ -33,12 +32,8 @@ export default function Home() {
             <Btn to="/app" variant="dark">See the app</Btn>
           </Reveal>
           <Reveal className="hero__stage" delay={200}>
-            <div className="phone phone--back">
-              <img src={img("/images/phone-preview.webp")} alt="" width={647} height={1400} />
-            </div>
-            <div className="phone phone--front">
-              <img src={img("/images/phone-create.webp")} alt="The app's prompt screen" width={647} height={1400} />
-            </div>
+            <img className="device device--back" src={img("/images/device-image.webp")} alt="" width={800} height={1635} />
+            <img className="device device--front" src={img("/images/device-video.webp")} alt="The app's home screen" width={800} height={1635} />
           </Reveal>
         </div>
       </section>
@@ -58,9 +53,7 @@ export default function Home() {
             ))}
           </div>
           <Reveal className="panel">
-            <div className="phone">
-              <img src={img("/images/phone-styles.webp")} alt="The style library screen" width={647} height={1400} loading="lazy" />
-            </div>
+            <img className="device" src={img("/images/device-library.webp")} alt="The style library screen" width={800} height={1635} loading="lazy" />
           </Reveal>
         </div>
       </section>
@@ -97,11 +90,10 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="stack-card__icons">
-              <span><ImageIcon size={22} aria-hidden="true" />Image</span>
-              <span><Film size={22} aria-hidden="true" />Video</span>
-              <span><Music size={22} aria-hidden="true" />Dance</span>
-              <span><Palette size={22} aria-hidden="true" />Styles</span>
+            <div className="styles-row" aria-label="Style examples">
+              <img src={img("/images/tile-macro.webp")} alt="Macro style" width={480} height={467} loading="lazy" />
+              <img src={img("/images/tile-popart.webp")} alt="Pop Art style" width={480} height={488} loading="lazy" />
+              <img src={img("/images/tile-ghibli.webp")} alt="Ghibli style" width={480} height={489} loading="lazy" />
             </div>
           </Reveal>
         </div>
@@ -181,9 +173,7 @@ export default function Home() {
                 ))}
               </dl>
             </div>
-            <div className="phone phone--side">
-              <img src={img("/images/phone-preview.webp")} alt="The generation preview screen" width={647} height={1400} loading="lazy" />
-            </div>
+            <img className="device" src={img("/images/device-image.webp")} alt="The generation preview screen" width={800} height={1635} loading="lazy" />
           </Reveal>
         </div>
       </section>

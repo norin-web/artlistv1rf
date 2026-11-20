@@ -1,45 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 
 const reduced = () => typeof matchMedia !== "undefined" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-/**
- * Index of the sticky scene step that matches the element's scroll progress.
- * The element is tall (N screens of scroll); its inner sticky block stays put.
- * State changes only when the step changes, so scrolling doesn't re-render each frame.
- * Reduced motion: always step 0 (the scene collapses to a static list in CSS).
- */
-export function useScrollIndex<T extends HTMLElement>(count: number) {
-  const ref = useRef<T>(null);
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || reduced()) return;
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const r = el.getBoundingClientRect();
-      const span = r.height - innerHeight;
-      const p = span <= 0 ? 0 : Math.min(1, Math.max(0, -r.top / span));
-      const next = Math.min(count - 1, Math.floor(p * count));
-      setIndex((cur) => (cur === next ? cur : next));
-    };
-    const onScroll = () => {
-      if (document.hidden) update();
-      else if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("resize", onScroll);
-    return () => {
-      removeEventListener("scroll", onScroll);
-      removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, [count]);
-
-  return { ref, index };
-}
 
 /**
  * Every .glow drifts toward the pointer while the pointer is over the glow's
