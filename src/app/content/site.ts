@@ -170,6 +170,17 @@ export const faq: { group: string; q: string; a: string }[] = [
   { group: "Privacy & control", q: "How do I restore a purchase?", a: "PLACEHOLDER — describe the restore path inside the app." },
 ];
 
+// 08 / From the blog — links to artlist.io. Descriptions are our own short summaries; article text is not copied.
+export const blogIndex = "https://artlist.io/blog/";
+export const blog = [
+  { rubric: "AI Tools", title: "Image Generator", text: "Create images from a text prompt. A starting point for AI images.", href: "https://artlist.io/blog/image-generator/" },
+  { rubric: "AI Tools", title: "Video Generator", text: "Turn a text or image prompt into a short video clip.", href: "https://artlist.io/blog/video-generator/" },
+  { rubric: "AI Models", title: "Nano Banana", text: "An image model available in Artlist, with its own guide.", href: "https://artlist.io/blog/nano-banana/" },
+  { rubric: "AI Models", title: "Kling", text: "A video model available in Artlist, with its own guide.", href: "https://artlist.io/blog/kling/" },
+  { rubric: "AI Models", title: "Veo", text: "A video model available in Artlist, with its own guide.", href: "https://artlist.io/blog/veo/" },
+  { rubric: "Learn", title: "Trends and Inspiration", text: "Ideas and examples from people working with AI.", href: "https://artlist.io/blog/trends-and-insights/" },
+];
+
 // Closing block
 export const closing = {
   title: "Less waiting. More creating.",

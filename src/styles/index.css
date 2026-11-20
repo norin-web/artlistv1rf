@@ -836,6 +836,41 @@ h3,
   line-height: 1.55;
 }
 
+/* 08 — blog cards: the whole card is clickable through the link's overlay */
+.blog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 240px;
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 0.3s var(--ease), transform 0.5s var(--ease);
+}
+.blog-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.blog-card .eyebrow {
+  margin: 0;
+}
+.blog-card__link {
+  margin-top: auto;
+  color: var(--text);
+  font-size: 15px;
+  text-decoration: none;
+}
+.blog-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+}
+.blog-more {
+  margin-top: 32px;
+}
+
 /* Closing CTA */
 .cta-block {
   display: flex;

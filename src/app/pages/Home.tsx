@@ -3,7 +3,7 @@ import { FaqTabs } from "../components/Faq";
 import Reveal from "../components/Reveal";
 import Split from "../components/Split";
 import {
-  app, betterWay, closing, flows, hero, modes, platform, plans, showcase, stack,
+  app, betterWay, blog, blogIndex, closing, flows, hero, modes, platform, plans, showcase, stack,
 } from "../content/site";
 import { img } from "../utils/img";
 
@@ -178,10 +178,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 08 / A little more clarity */}
+      {/* 08 / From the blog — cards linking to the original articles */}
+      <section className="section" id="blog">
+        <div className="container">
+          <SecLabel num="08" label="From the blog" />
+          <Reveal as="h2" className="h2 h2--wide">Guides and models, from the Artlist blog.</Reveal>
+          <div className="grid3">
+            {blog.map((b, i) => (
+              <Reveal className="blog-card" key={b.title} delay={(i % 3) * 80}>
+                <span className="eyebrow">{b.rubric}</span>
+                <h3 className="h3">{b.title}</h3>
+                <p className="muted">{b.text}</p>
+                <a className="blog-card__link" href={b.href} target="_blank" rel="noopener noreferrer">
+                  Read on artlist.io <span aria-hidden="true">↗</span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal as="p" className="small muted blog-more">
+            More articles: <a className="link" href={blogIndex} target="_blank" rel="noopener noreferrer">artlist.io/blog</a>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 09 / A little more clarity */}
       <section className="section" id="faq">
         <div className="container">
-          <SecLabel num="08" label="A little more clarity" />
+          <SecLabel num="09" label="A little more clarity" />
           <Reveal as="h2" className="h2 h2--wide">Answers to the questions that come up most.</Reveal>
           <FaqTabs />
         </div>
