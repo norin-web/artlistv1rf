@@ -1,6 +1,6 @@
-# Artist — promo site
+# Artlist — promo site
 
-Static promo site for the Artist app (AI video and image generator for iPhone).
+Static promo site for the Artlist app (AI video and image generator for iPhone).
 React 18 + TypeScript + Vite 6 + Tailwind CSS 4 + React Router 7. Deployed to GitHub Pages.
 
 ## Run

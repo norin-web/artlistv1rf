@@ -4,7 +4,7 @@
 export const PLACEHOLDER = "PLACEHOLDER";
 
 export const site = {
-  brand: "Artist",
+  brand: "Artlist",
   email: PLACEHOLDER,
   operator: PLACEHOLDER,
   disclaimer: "PLACEHOLDER — trademark and partner notice from the operator's documents.",
@@ -45,7 +45,7 @@ export const hero = {
 
 // 01 / Platform
 export const platform = {
-  title: "Great ideas feel effortless. Artist turns a sentence into a clip, a reference into a style and a photo into motion.",
+  title: "Great ideas feel effortless. Artlist turns a sentence into a clip, a reference into a style and a photo into motion.",
   points: [
     { title: "Prompt", text: "Describe the scene in plain words." },
     { title: "Reference", text: "Add a photo to steer the look and the motion." },

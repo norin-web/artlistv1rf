@@ -92,7 +92,7 @@ export default function Home() {
             <div className="stack-card__chat">
               {stack.chat.map((m) => (
                 <div key={m.text} className={`bubble bubble--${m.who}`}>
-                  <span className="bubble__who">{m.who === "you" ? "You" : "Artist"}</span>
+                  <span className="bubble__who">{m.who === "you" ? "You" : "Artlist"}</span>
                   <p>{m.text}</p>
                 </div>
               ))}
