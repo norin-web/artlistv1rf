@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Btn from "../components/Btn";
 import { FaqTabs } from "../components/Faq";
 import Reveal from "../components/Reveal";
@@ -8,10 +9,28 @@ import {
 import { img } from "../utils/img";
 
 export default function Home() {
+  const video = useRef<HTMLVideoElement>(null);
+  // With reduced motion the video stays on its first frame.
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) video.current?.pause();
+  }, []);
+
   return (
     <>
-      {/* Hero: two overlapping phones, the back one more transparent */}
-      <section className="hero">
+      {/* Hero: looping video behind, two overlapping phones, the back one more transparent */}
+      <section className="hero hero--video">
+        <div className="hero__bg" aria-hidden="true">
+          <video
+            ref={video}
+            src={img("/video/hero.mp4")}
+            poster={img("/images/hero-poster.webp")}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
+        </div>
         <div className="container hero__center">
           <p className="eyebrow">{hero.eyebrow}</p>
           <Split as="h1" parts={[["Images and short videos"], ["\n"], ["from a prompt."]]} />

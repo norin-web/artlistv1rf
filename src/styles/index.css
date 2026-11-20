@@ -18,6 +18,7 @@
   --font: "Inter", system-ui, -apple-system, sans-serif;
   --container: 1200px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --page-top: 88px; /* room under the fixed pill header */
 }
 
 *,
@@ -85,7 +86,7 @@ textarea:focus-visible {
 .page {
   position: relative;
   min-height: 60vh;
-  padding-top: 88px; /* room under the fixed pill header */
+  padding-top: var(--page-top);
 }
 
 /* ── Type: reference metrics (hero 64px, section headings 44px, tight tracking, weight 400) ── */
@@ -386,6 +387,39 @@ h3,
   position: relative;
   overflow: hidden;
   padding: clamp(96px, 12vw, 152px) 0 0;
+}
+/* Video behind the whole first section, starting at the very top of the page */
+.hero--video {
+  margin-top: calc(var(--page-top) * -1);
+  padding-top: calc(var(--page-top) + clamp(96px, 12vw, 152px));
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--bg);
+  pointer-events: none;
+}
+.hero__bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--bg) 30%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 20%, transparent) 45%,
+    var(--bg) 100%
+  );
+}
+.hero--video .eyebrow,
+.hero--video .lead {
+  color: color-mix(in srgb, var(--text) 82%, transparent);
 }
 .hero__center {
   text-align: center;
@@ -979,8 +1013,8 @@ h3,
 }
 
 @media (max-width: 560px) {
-  .page {
-    padding-top: 80px;
+  :root {
+    --page-top: 80px;
   }
   .specs__row {
     grid-template-columns: 1fr;
