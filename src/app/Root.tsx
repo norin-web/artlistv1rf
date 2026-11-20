@@ -2,11 +2,12 @@ import { Outlet, useLocation } from "react-router";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { site } from "./content/site";
+import Btn from "./components/Btn";
+import { app, site } from "./content/site";
 import { useGlowFollow } from "./utils/motion";
 
 const titles: Record<string, string> = {
-  "/app": "App",
+  "/app": "The App",
   "/about": "About",
   "/support": "Support",
   "/contact": "Contact",
@@ -16,15 +17,18 @@ const titles: Record<string, string> = {
 };
 
 export default function Root() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useGlowFollow();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    // Anchor links (/#platform) scroll to their block; any other route starts at the top.
+    const target = hash ? document.getElementById(hash.slice(1)) : null;
+    if (target) target.scrollIntoView({ block: "start", behavior: "instant" as ScrollBehavior });
+    else window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     const t = titles[pathname.replace(/\/$/, "")];
     // brand first, so a narrow browser tab still shows the app name
     document.title = t ? `${site.brand} — ${t}` : `${site.brand} — AI video and image generator for iPhone`;
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return (
     <>
@@ -34,6 +38,9 @@ export default function Root() {
         <Outlet />
       </main>
       <Footer />
+      <Btn href={app.url} variant="white" size="sm" className="float-cta">
+        <span>Download</span>
+      </Btn>
     </>
   );
 }

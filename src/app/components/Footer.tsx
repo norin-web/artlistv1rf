@@ -1,62 +1,51 @@
-import { Link, useLocation } from "react-router";
-import { app, nav, site } from "../content/site";
+import { Link } from "react-router";
+import { app, nav, pages, site } from "../content/site";
 import { img } from "../utils/img";
-import Btn from "./Btn";
-import Reveal from "./Reveal";
 
-// Contact, Support and the legal pages skip the big download CTA above the footer.
-const NO_CTA = ["/contact", "/feedback", "/support", "/privacy", "/terms"];
-
+/** Footer: link columns, mail contact, and the brand set large at the bottom. */
 export default function Footer() {
-  const { pathname } = useLocation();
-  const cta = !NO_CTA.includes(pathname.replace(/\/$/, ""));
   return (
-    <footer className={`footer${cta ? "" : " footer--plain"}`}>
-      {cta && (
-        <Reveal className="footer__cta">
-          <img className="footer__icon" src={img("/images/app-icon.png")} alt="" width={120} height={120} loading="lazy" />
-          <h2 className="h-display footer__title">Start with one sentence.</h2>
-          <Btn href={app.url} size="md">Download on the App Store</Btn>
-          <p className="muted small">iPhone · iOS {app.minIOS}+</p>
-        </Reveal>
-      )}
-
+    <footer className="footer">
       <div className="container">
-        <div className="footer__card">
-          <div className="footer__top">
-            <div className="footer__brand">
-              <Link to="/" className="logo">
-                <img src={img("/images/app-icon.png")} alt="" width={32} height={32} />
-                <span>{site.brand}</span>
-              </Link>
-              <p className="muted small">{site.disclaimer}</p>
-              <a className="chip" href={`mailto:${site.email}`}>{site.email}</a>
+        <div className="footer__top">
+          <div className="footer__cols">
+            <div>
+              <span className="eyebrow">Page</span>
+              <ul>
+                {nav.map((n) => (
+                  <li key={n.to}><Link to={n.to}>{n.label}</Link></li>
+                ))}
+              </ul>
             </div>
-            <div className="footer__cols">
-              <div>
-                <span className="eyebrow">Product</span>
-                <ul>
-                  {nav.slice(0, 2).map((n) => (
-                    <li key={n.to}><Link to={n.to}>{n.label}</Link></li>
-                  ))}
-                  <li><a href={app.url} target="_blank" rel="noopener noreferrer">App Store</a></li>
-                </ul>
-              </div>
-              <div>
-                <span className="eyebrow">Help</span>
-                <ul>
-                  <li><Link to="/support">Support</Link></li>
-                  <li><Link to="/contact">Contact</Link></li>
-                  <li><Link to="/privacy">Privacy Policy</Link></li>
-                  <li><Link to="/terms">Terms of Use</Link></li>
-                </ul>
-              </div>
+            <div>
+              <span className="eyebrow">Help</span>
+              <ul>
+                {pages.map((p) => (
+                  <li key={p.to}><Link to={p.to}>{p.label}</Link></li>
+                ))}
+                <li><Link to="/privacy">Privacy Policy</Link></li>
+                <li><Link to="/terms">Terms of Use</Link></li>
+              </ul>
+            </div>
+            <div>
+              <span className="eyebrow">Get the app</span>
+              <ul>
+                <li><a href={app.url} target="_blank" rel="noopener noreferrer">App Store</a></li>
+                <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+              </ul>
             </div>
           </div>
-          <div className="footer__copy">
-            <span>© {site.year} {site.operator}. All rights reserved.</span>
-            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Back to top ↑</button>
-          </div>
+          <p className="footer__note muted small">{site.disclaimer}</p>
+        </div>
+
+        <div className="footer__mark" aria-hidden="true">
+          <img src={img("/images/app-icon.png")} alt="" width={72} height={72} loading="lazy" />
+          <span>{site.brand}</span>
+        </div>
+
+        <div className="footer__copy">
+          <span>© {site.year} {site.operator}. All rights reserved.</span>
+          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Back to top ↑</button>
         </div>
       </div>
     </footer>

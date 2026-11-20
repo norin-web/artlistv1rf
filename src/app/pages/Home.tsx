@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { Film, Image as ImageIcon, Music, Palette } from "lucide-react";
 import Btn from "../components/Btn";
-import Faq from "../components/Faq";
+import { FaqTabs } from "../components/Faq";
 import Reveal from "../components/Reveal";
 import Split from "../components/Split";
-import { app, features, scene, steps } from "../content/site";
+import {
+  app, betterWay, closing, flows, hero, modes, platform, plans, showcase, stack,
+} from "../content/site";
 import { img } from "../utils/img";
-import { useScrollIndex } from "../utils/motion";
 
-function SecHead({ num, label }: { num: string; label: string }) {
+/** Section label in the reference style: "01 / THE PLATFORM". */
+function SecLabel({ num, label }: { num: string; label: string }) {
   return (
     <Reveal className="sechead">
       <span className="sechead__n">{num}</span>
@@ -17,83 +19,124 @@ function SecHead({ num, label }: { num: string; label: string }) {
 }
 
 export default function Home() {
-  const { ref: sceneRef, index } = useScrollIndex<HTMLDivElement>(scene.length);
-  const [tab, setTab] = useState(0);
-
   return (
     <>
+      {/* Hero: centred headline, two overlapping phones (back one more transparent) */}
       <section className="hero">
         <div className="glow" aria-hidden="true" />
-        <div className="container hero__grid">
-          <div className="hero__copy">
-            <Reveal as="span" className="eyebrow">AI video and image generator for iPhone</Reveal>
-            <Split
-              as="h1"
-              parts={[["Describe it."], ["\n"], ["Generate it."], ["\n"], ["Make it move.", true]]}
-            />
-            <Reveal as="p" className="lead" delay={300}>
-              Create images and short videos from a prompt, a reference photo or a starting frame, and bring
-              your own pictures to life.
-            </Reveal>
-            <Reveal className="hero__cta" delay={420}>
-              <Btn href={app.url}>Download on the App Store</Btn>
-              <Btn to="/app" variant="dark">See the app</Btn>
-            </Reveal>
-            <Reveal as="p" className="small muted" delay={480}>
-              Available on the App Store · iOS {app.minIOS}+
-            </Reveal>
-          </div>
-          <Reveal className="hero__visual" delay={200}>
-            <div className="phone">
+        <div className="container hero__center">
+          <Reveal as="span" className="eyebrow">{hero.eyebrow}</Reveal>
+          <Split as="h1" parts={[["Less blank page."], ["\n"], ["More motion in every frame.", true]]} />
+          <Reveal as="p" className="lead lead--center" delay={300}>{hero.lead}</Reveal>
+          <Reveal className="hero__cta" delay={420}>
+            <Btn href={app.url}>Download on the App Store</Btn>
+            <Btn to="/app" variant="dark">See the app</Btn>
+          </Reveal>
+          <Reveal className="hero__stage" delay={200}>
+            <div className="phone phone--back">
+              <img src={img("/images/phone-preview.webp")} alt="" width={647} height={1400} />
+            </div>
+            <div className="phone phone--front">
               <img src={img("/images/phone-create.webp")} alt="The app's prompt screen" width={647} height={1400} />
             </div>
           </Reveal>
         </div>
       </section>
 
+      {/* 01 / The platform */}
+      <section className="section" id="platform">
+        <div className="container">
+          <SecLabel num="01" label="The platform" />
+          <Reveal as="h2" className="h2 h2--wide">{platform.title}</Reveal>
+          <div className="grid3">
+            {platform.points.map((p, i) => (
+              <Reveal className="tile" key={p.title} delay={i * 80}>
+                <span className="tile__n">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="h3">{p.title}</h3>
+                <p className="muted">{p.text}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="panel">
+            <div className="phone">
+              <img src={img("/images/phone-styles.webp")} alt="The style library screen" width={647} height={1400} loading="lazy" />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 02 / A better way to work */}
       <section className="section">
         <div className="container">
-          <SecHead num="01" label="The app" />
-          <Reveal as="h2" className="h2">Three screens, one flow.</Reveal>
+          <SecLabel num="02" label="A better way to work" />
+          <Reveal as="h2" className="h2 h2--wide">{betterWay.title}</Reveal>
+          <ol className="rows">
+            {betterWay.rows.map((r, i) => (
+              <Reveal as="li" className="row" key={r.title} delay={(i % 2) * 100}>
+                <span className="row__n">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="h3">{r.title}</h3>
+                <p className="muted">{r.text}</p>
+              </Reveal>
+            ))}
+          </ol>
         </div>
-        <div className="scene" ref={sceneRef}>
-          <div className="scene__sticky">
-            <div className="container scene__grid">
-              <div className="scene__text">
-                {scene.map((s, i) => (
-                  <div key={s.title} className={`scene__item${index === i ? " is-on" : ""}`}>
-                    <span className="eyebrow">{String(i + 1).padStart(2, "0")}</span>
-                    <h3 className="h3">{s.title}</h3>
-                    <p className="lead">{s.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="scene__phones">
-                {scene.map((s, i) => (
-                  <img
-                    key={s.shot}
-                    className={`scene__shot${index === i ? " is-on" : ""}`}
-                    src={img(s.shot)}
-                    alt={s.title}
-                    width={647}
-                    height={1400}
-                    loading="lazy"
-                  />
-                ))}
-              </div>
+      </section>
+
+      {/* 03 / Your stack, in sync — centred headline, a dark card with a prompt exchange */}
+      <section className="section section--center">
+        <div className="container">
+          <SecLabel num="03" label="Your stack, in sync" />
+          <Reveal as="h2" className="h2 h2--center">{stack.title}</Reveal>
+          <Reveal as="p" className="lead lead--center">{stack.lead}</Reveal>
+          <Reveal className="stack-card">
+            <div className="stack-card__chat">
+              {stack.chat.map((m) => (
+                <div key={m.text} className={`bubble bubble--${m.who}`}>
+                  <span className="bubble__who">{m.who === "you" ? "You" : "Artist"}</span>
+                  <p>{m.text}</p>
+                </div>
+              ))}
             </div>
+            <div className="stack-card__icons">
+              <span><ImageIcon size={22} aria-hidden="true" />Image</span>
+              <span><Film size={22} aria-hidden="true" />Video</span>
+              <span><Music size={22} aria-hidden="true" />Dance</span>
+              <span><Palette size={22} aria-hidden="true" />Styles</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 04 / Meet the creative modes */}
+      <section className="section">
+        <div className="container">
+          <SecLabel num="04" label="Meet the creative modes" />
+          <Reveal as="h2" className="h2 h2--center">Four modes. One prompt field.</Reveal>
+          <div className="grid2">
+            {modes.map((m, i) => (
+              <Reveal className="mode" key={m.title} delay={(i % 2) * 100}>
+                <span className="eyebrow">{m.label}</span>
+                <h3 className="h3">{m.title}</h3>
+                <p className="muted">{m.text}</p>
+                <div className="mode__ui">
+                  <span className="mode__field">{m.field}</span>
+                  <p>{m.value}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
+      {/* 05 / Small starts — the flows */}
+      <section className="section" id="start">
         <div className="container">
-          <SecHead num="02" label="What you can make" />
-          <Reveal as="h2" className="h2">Seven ways to start a generation.</Reveal>
+          <SecLabel num="05" label="Small starts. Big possibilities." />
+          <Reveal as="h2" className="h2 h2--wide">Start with the clip you have in mind.</Reveal>
           <div className="grid3">
-            {features.map((f, i) => (
-              <Reveal className="tile" key={f.title} delay={(i % 3) * 80}>
-                <span className="tile__n">{String(i + 1).padStart(2, "0")}</span>
+            {flows.map((f, i) => (
+              <Reveal className="flow" key={f.title} delay={(i % 3) * 80}>
+                <span className="eyebrow">Flow / {String(i + 1).padStart(2, "0")}</span>
                 <h3 className="h3">{f.title}</h3>
                 <p className="muted">{f.text}</p>
               </Reveal>
@@ -102,67 +145,65 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      {/* 06 / Room to grow — plans come from the App Store, placeholders until then */}
+      <section className="section" id="pricing">
         <div className="container">
-          <SecHead num="03" label="How it works" />
-          <Reveal as="h2" className="h2">Three steps from idea to clip.</Reveal>
-          <div className="steps">
-            {steps.map((s, i) => (
-              <Reveal className="line step" key={s.title} delay={i * 120}>
-                <span className="step__n">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="h3">{s.title}</h3>
-                <p className="muted">{s.text}</p>
+          <SecLabel num="06" label="Room to grow" />
+          <Reveal as="h2" className="h2 h2--wide">Plans, as listed on the App Store.</Reveal>
+          <Reveal as="p" className="lead">Prices and billing are shown on the App Store listing.</Reveal>
+          <div className="grid3 grid3--plans">
+            {plans.map((p, i) => (
+              <Reveal className="plan" key={i} delay={i * 80}>
+                <span className="eyebrow">{p.name}</span>
+                <div className="plan__price">{p.price}</div>
+                <p className="muted">{p.text}</p>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container split-two">
-          <div>
-            <SecHead num="04" label="Styles" />
-            <Reveal as="h2" className="h2">Start from a look you already like.</Reveal>
-            <Reveal as="p" className="lead">
-              Browse the style library, pick a look, and apply it to any prompt. Prompt presets give you a
-              starting point when you have none.
-            </Reveal>
-            <div className="tabs" role="tablist" aria-label="Start points">
-              {features.slice(0, 3).map((f, i) => (
-                <button
-                  key={f.title}
-                  role="tab"
-                  aria-selected={tab === i}
-                  className={`tabs__btn${tab === i ? " is-on" : ""}`}
-                  onClick={() => setTab(i)}
-                >
-                  {f.title}
-                </button>
-              ))}
+      {/* 07 / Prompts in motion — one real example from the app */}
+      <section className="section" id="prompts">
+        <div className="container">
+          <SecLabel num="07" label="Prompts in motion" />
+          <Reveal as="h2" className="h2 h2--wide">{showcase.title}</Reveal>
+          <Reveal className="showcase">
+            <div className="showcase__copy">
+              <span className="eyebrow">Prompt</span>
+              <p className="showcase__prompt">{showcase.prompt}</p>
+              <dl className="specs specs--compact">
+                {showcase.settings.map(([k, v]) => (
+                  <div className="specs__row" key={k}>
+                    <dt>{k}</dt>
+                    <dd>{v}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
-            <p className="lead tabs__text">{features[tab].text}</p>
-          </div>
-          <Reveal className="phone phone--side">
-            <img src={img("/images/phone-styles.webp")} alt="The style library screen" width={647} height={1400} loading="lazy" />
+            <div className="phone phone--side">
+              <img src={img("/images/phone-preview.webp")} alt="The generation preview screen" width={647} height={1400} loading="lazy" />
+            </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container split-two split-two--narrow">
-          <div>
-            <SecHead num="05" label="Questions" />
-            <Reveal as="h2" className="h2">Answers to what people ask first.</Reveal>
-          </div>
-          <Faq limit={5} />
+      {/* 08 / A little more clarity */}
+      <section className="section" id="faq">
+        <div className="container">
+          <SecLabel num="08" label="A little more clarity" />
+          <Reveal as="h2" className="h2 h2--wide">Answers to the questions that come up most.</Reveal>
+          <FaqTabs />
         </div>
       </section>
 
+      {/* Closing */}
       <section className="section section--cta">
         <div className="container">
           <Reveal className="cta-block">
-            <img className="cta-block__icon" src={img("/images/app-icon.png")} alt="" width={96} height={96} loading="lazy" />
-            <h2 className="h2">Make your first clip today.</h2>
+            <span className="eyebrow">Less friction. More forward.</span>
+            <h2 className="h2 h2--center">{closing.title}</h2>
+            <p className="lead">{closing.lead}</p>
             <Btn href={app.url}>Download on the App Store</Btn>
           </Reveal>
         </div>

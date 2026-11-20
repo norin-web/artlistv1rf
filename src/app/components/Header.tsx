@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router";
-import { nav, app, site } from "../content/site";
+import { Link, useLocation } from "react-router";
+import { app, nav, pages, site } from "../content/site";
 import { img } from "../utils/img";
 import Btn from "./Btn";
 
-/** Floating pill header. Always sticky: it never hides on scroll. */
+/** Floating pill, fixed at the top centre: logo, download, menu. Never hides. */
 export default function Header() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
@@ -20,20 +20,13 @@ export default function Header() {
 
   return (
     <>
-      <header className="header">
-        <div className="header__bar">
+      <header className="pill">
+        <div className="pill__bar">
           <Link to="/" className="logo" aria-label={`${site.brand} home`}>
-            <img src={img("/images/app-icon.png")} alt="" width={32} height={32} />
+            <img src={img("/images/app-icon.png")} alt="" width={28} height={28} />
             <span>{site.brand}</span>
           </Link>
-          <nav className="header__nav" aria-label="Main">
-            {nav.map((n) => (
-              <NavLink key={n.to} to={n.to} className={({ isActive }) => `navlink${isActive ? " is-active" : ""}`}>
-                {n.label}
-              </NavLink>
-            ))}
-          </nav>
-          <Btn href={app.url} variant="white" size="sm" className="header__cta">
+          <Btn href={app.url} variant="white" size="sm" className="pill__cta">
             <span className="only-wide">Download</span>
             <span className="only-narrow">Get</span>
           </Btn>
@@ -49,13 +42,24 @@ export default function Header() {
           </button>
         </div>
       </header>
+
       <div id="mmenu" className={`mmenu${open ? " is-open" : ""}`} aria-hidden={!open}>
-        <Link to="/" className="mmenu__link" tabIndex={open ? 0 : -1}>Home</Link>
-        {nav.map((n) => (
-          <Link key={n.to} to={n.to} className="mmenu__link" tabIndex={open ? 0 : -1}>
-            {n.label}
-          </Link>
-        ))}
+        <nav className="mmenu__col" aria-label="On this page">
+          <span className="eyebrow">On this page</span>
+          {nav.map((n) => (
+            <Link key={n.to} to={n.to} className="mmenu__link" tabIndex={open ? 0 : -1}>
+              {n.label}
+            </Link>
+          ))}
+        </nav>
+        <nav className="mmenu__col" aria-label="Pages">
+          <span className="eyebrow">Pages</span>
+          {pages.map((p) => (
+            <Link key={p.to} to={p.to} className="mmenu__link" tabIndex={open ? 0 : -1}>
+              {p.label}
+            </Link>
+          ))}
+        </nav>
         <Btn href={app.url} variant="white">Download on the App Store</Btn>
       </div>
     </>
