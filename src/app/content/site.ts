@@ -5,10 +5,10 @@ export const PLACEHOLDER = "PLACEHOLDER";
 
 export const site = {
   brand: "Artlist",
-  email: PLACEHOLDER,
-  operator: PLACEHOLDER,
-  disclaimer: "PLACEHOLDER — trademark and partner notice from the operator's documents.",
-  about: "PLACEHOLDER — two or three sentences about the operator.",
+  email: "ward@ridder.world",
+  operator: "Ward Ridder",
+  disclaimer: "The Artlist name and related trademarks belong to Artlist Ltd. and are used under a signed commercial authorization.",
+  about: "Artlist is developed and operated by Ward Ridder in Stockholm, Sweden, under a commercial authorization from Artlist Ltd.",
   year: 2026,
 };
 
@@ -84,9 +84,11 @@ export const faq: { group: string; q: string; a: string }[] = [
   { group: "General", q: "Where do I start?", a: "Open the app, write a prompt or pick a preset, then tap Generate." },
   { group: "General", q: "Do I need technical knowledge?", a: "No. Everything is set up with prompts, presets and simple controls." },
   { group: "Creating", q: "How do I add a reference?", a: "Attach a photo as a reference, a start frame or an end frame before you generate." },
-  { group: "Creating", q: "Do I need an account?", a: "PLACEHOLDER — confirm whether an account is required." },
+  { group: "Creating", q: "Do I need an account?", a: "No. The app does not require you to create an account or log in." },
   { group: "Privacy & control", q: "How do I cancel a subscription?", a: "Subscriptions are managed through your Apple ID: open Settings on your iPhone, tap your name, then Subscriptions, and choose the app." },
-  { group: "Privacy & control", q: "How do I restore a purchase?", a: "PLACEHOLDER — describe the restore path inside the app." },
+  { group: "Privacy & control", q: "How do I restore a purchase?", a: "Purchases go through the App Store, and the app checks purchase status to restore access. If something does not come back, write to the support email." },
+  { group: "Privacy & control", q: "Are my photos uploaded?", a: "Only photos you choose are used, and only for the feature you picked. They may be sent to an AI provider to create the result. The app does not upload your whole photo library." },
+  { group: "Privacy & control", q: "Where are my creations saved?", a: "Generated images and videos are stored on your device. There is no account gallery in the cloud." },
 ];
 
 // From the blog: plain links to artlist.io, no article text is copied.
@@ -109,6 +111,6 @@ export const specs: [string, string][] = [
   ["Category", PLACEHOLDER],
   ["Compatibility", `iPhone, iOS ${PLACEHOLDER} or later`],
   ["Languages", PLACEHOLDER],
-  ["Developer", PLACEHOLDER],
+  ["Developer", site.operator],
   ["Age rating", PLACEHOLDER],
 ];

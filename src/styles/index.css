@@ -819,10 +819,13 @@ h3,
   color: var(--text);
 }
 .legal2__toc b {
+  flex-shrink: 0;
+  min-width: 20px;
   font-weight: 500;
   color: var(--text-3);
 }
 .legal2__toc i {
+  flex-shrink: 0;
   width: 24px;
   height: 1px;
   background: var(--text-3);
@@ -843,6 +846,11 @@ h3,
   color: var(--text-2);
   line-height: 1.65;
   font-size: 16px;
+}
+.legal2__intro,
+.lsec__text p,
+.lsec__text ul {
+  margin: 0 0 16px;
 }
 .lsec {
   padding: 32px 0;

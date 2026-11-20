@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link } from "react-router";
-import { site } from "../content/site";
+import { PLACEHOLDER, site } from "../content/site";
 import { legalUpdated } from "../content/legal";
 import Split from "./Split";
 import Reveal from "./Reveal";
@@ -62,6 +62,7 @@ function Block({ text }: { text: string }): ReactNode {
 }
 
 export default function LegalPage({ doc }: { doc: Doc }) {
+  const date = doc.updated ?? (legalUpdated === PLACEHOLDER ? null : `Effective ${legalUpdated}`);
   const { intro, sections } = useMemo(() => parse(doc.body ?? ""), [doc.body]);
   const [active, setActive] = useState(sections[0]?.id);
 
@@ -89,9 +90,7 @@ export default function LegalPage({ doc }: { doc: Doc }) {
     <>
       <section className="lhero">
         <div className="container">
-          <Reveal as="span" className="eyebrow lhero__date">
-            {doc.updated ?? `Effective ${legalUpdated}`}
-          </Reveal>
+          {date && <Reveal as="span" className="eyebrow lhero__date">{date}</Reveal>}
           <Split as="h1" className="lhero__title" parts={[[doc.title]]} />
           <Reveal className="lhero__meta" delay={400}>
             <span>{sections.length} sections</span>
