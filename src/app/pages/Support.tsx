@@ -7,32 +7,27 @@ export default function Support() {
   return (
     <>
       <section className="hero hero--page">
-        <div className="glow" aria-hidden="true" />
         <div className="container">
-          <Reveal as="span" className="eyebrow">Support</Reveal>
-          <Split as="h1" parts={[["Help, when you need it."]]} />
+          <Split as="h1" parts={[["Support"]]} />
           <Reveal as="p" className="lead" delay={300}>
-            Answers to the questions we hear most. For anything else, write to us.
+            Answers to common questions. For anything else, write to us.
           </Reveal>
         </div>
       </section>
 
       <section className="section">
         <div className="container split-two split-two--narrow">
-          <div>
-            <Reveal as="span" className="eyebrow">Common questions</Reveal>
-          </div>
+          <h2 className="h2">Common questions.</h2>
           <Faq />
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <Reveal className="cta-block">
-            <h2 className="h2">Still stuck?</h2>
-            <p className="lead">Email us and we'll reply by mail.</p>
+          <div className="cta">
+            <h2 className="h2">Still stuck? Email us.</h2>
             <a className="mail-big" href={`mailto:${site.email}`}>{site.email}</a>
-          </Reveal>
+          </div>
         </div>
       </section>
     </>

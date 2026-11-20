@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router";
 import { faq, faqGroups } from "../content/site";
 
 /** Native <details> accordion. `grouped` adds the side tabs used on the home page. */
@@ -30,25 +29,18 @@ export function FaqTabs() {
   const items = faq.filter((f) => f.group === group);
   return (
     <div className="faq-tabs">
-      <div className="faq-tabs__side">
-        <div className="faq-tabs__list" role="tablist" aria-label="Question groups">
-          {faqGroups.map((g) => (
-            <button
-              key={g}
-              role="tab"
-              aria-selected={group === g}
-              className={`faq-tabs__btn${group === g ? " is-on" : ""}`}
-              onClick={() => setGroup(g)}
-            >
-              {g}
-            </button>
-          ))}
-        </div>
-        <div className="faq-tabs__ask">
-          <span className="eyebrow">Got questions?</span>
-          <p className="muted">Write to us and we will help you find a starting point.</p>
-          <Link className="btn btn--dark btn--sm" to="/contact">Contact us</Link>
-        </div>
+      <div className="faq-tabs__list" role="tablist" aria-label="Question groups">
+        {faqGroups.map((g) => (
+          <button
+            key={g}
+            role="tab"
+            aria-selected={group === g}
+            className={`faq-tabs__btn${group === g ? " is-on" : ""}`}
+            onClick={() => setGroup(g)}
+          >
+            {g}
+          </button>
+        ))}
       </div>
       <FaqList items={items} />
     </div>

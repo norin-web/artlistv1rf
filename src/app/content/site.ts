@@ -23,10 +23,9 @@ export const app = {
 
 // Header and footer links. Anchors point at blocks on the home page.
 export const nav = [
-  { to: "/#platform", label: "Platform" },
-  { to: "/#start", label: "Start" },
-  { to: "/#pricing", label: "Pricing" },
+  { to: "/#start", label: "Features" },
   { to: "/#prompts", label: "Prompts" },
+  { to: "/#blog", label: "Blog" },
   { to: "/#faq", label: "FAQ" },
 ];
 
@@ -40,12 +39,12 @@ export const pages = [
 // Hero
 export const hero = {
   eyebrow: "AI video and image generator for iPhone",
-  lead: "Create images and short videos from a prompt, a reference photo or a starting frame, and bring your own pictures to life.",
+  lead: "Create images and short videos from a prompt, a reference photo or a starting frame.",
 };
 
-// 01 / Platform
+// Ways to start
 export const platform = {
-  title: "Great ideas feel effortless. Artlist turns a sentence into a clip, a reference into a style and a photo into motion.",
+  title: "Start from a prompt, a photo or a frame.",
   points: [
     { title: "Prompt", text: "Describe the scene in plain words." },
     { title: "Reference", text: "Add a photo to steer the look and the motion." },
@@ -53,77 +52,7 @@ export const platform = {
   ],
 };
 
-// 02 / A better way to work
-export const betterWay = {
-  title: "Less blank page. Less tool-hopping. More clips you keep.",
-  rows: [
-    { title: "Blank page", text: "Start from one sentence, or pick a preset." },
-    { title: "Tool-hopping", text: "Images and videos in one app, on your iPhone." },
-    { title: "Guessing at styles", text: "Browse the style library and apply a look to any prompt." },
-    { title: "Slow iterations", text: "Adjust the prompt and generate again in seconds of your attention." },
-  ],
-};
-
-// 03 / Your stack, in sync
-export const stack = {
-  title: "One prompt. Every reference you have.",
-  lead: "Photos, frames and styles work together, so the result matches what you pictured.",
-  chat: [
-    { who: "you", text: "Turn this photo into a short clip, cinematic, golden hour." },
-    { who: "app", text: "Reference added · Style: Cinematic · Ready to generate" },
-  ],
-};
-
-// 04 / Meet the creative modes
-export const modes = [
-  {
-    label: "Video",
-    title: "AI Video Generator",
-    text: "Turn a written idea into a short clip.",
-    field: "Prompt",
-    value: "Cinematic sunset timelapse over mountain peaks, golden hour, drone shot",
-  },
-  {
-    label: "Motion",
-    title: "Image to Video",
-    text: "Start from one of your pictures and bring it into motion.",
-    field: "Start frame",
-    value: "Your photo, added as the first frame",
-  },
-  {
-    label: "Dance",
-    title: "AI Dance",
-    text: "Put a person from a photo into a short dance clip.",
-    field: "Reference",
-    value: "A photo of a person, ready for motion",
-  },
-  {
-    label: "Studio",
-    title: "Generative Media Studio",
-    text: "Make images and videos in one place, with the settings you need.",
-    field: "Model",
-    value: "Flux Pro · 1024 × 1024",
-  },
-];
-
-// 05 / Small starts. Big possibilities.
-export const flows = [
-  { title: "Text to Video", text: "Describe a scene and generate the motion from words alone." },
-  { title: "Image to Video", text: "Start from a picture and bring it into motion." },
-  { title: "AI Dance", text: "Turn a photo into a short dance clip." },
-  { title: "Bring Memories Back to Life", text: "Animate an old photo into a short moving scene." },
-  { title: "Explore Creative Styles", text: "Browse the style library and apply a look to any prompt." },
-  { title: "Start and End Frames", text: "Set how a clip begins and how it ends." },
-];
-
-// 06 / Room to grow — prices come from the App Store listing, nothing is invented here.
-export const plans = [
-  { name: "PLACEHOLDER", price: PLACEHOLDER, text: "PLACEHOLDER — what this plan includes." },
-  { name: "PLACEHOLDER", price: PLACEHOLDER, text: "PLACEHOLDER — what this plan includes." },
-  { name: "PLACEHOLDER", price: PLACEHOLDER, text: "PLACEHOLDER — what this plan includes." },
-];
-
-// 07 / Prompts in motion — one real example from the app's preview screen.
+// One real example from the app's preview screen.
 export const showcase = {
   title: "From prompt to preview, on one screen.",
   prompt: "Cinematic sunset timelapse over mountain peaks, golden hour, drone shot, 4K",
@@ -143,18 +72,8 @@ export const features = [
   { title: "AI Dance", text: "Put a person from a photo into a short dance clip." },
   { title: "Generative Media Studio", text: "Make images and videos in one place, with the settings you need." },
   { title: "Bring Memories Back to Life", text: "Animate an old photo into a short moving scene." },
-];
-
-export const steps = [
-  { title: "Write a prompt", text: "Describe what you want to see, or pick a preset to begin." },
-  { title: "Add references", text: "Attach a photo, a start frame or an end frame if you have one." },
-  { title: "Generate and keep", text: "Review the result, then save it or share it." },
-];
-
-export const principles = [
-  { title: "Start from a sentence", text: "A short description is enough to begin. Refine from there." },
-  { title: "Shape it with references", text: "Photos and frames steer the result more than words alone." },
-  { title: "Keep the final say", text: "Every result is yours to review, keep or discard." },
+  { title: "Start and End Frames", text: "Set how a clip begins and how it ends." },
+  { title: "Style library", text: "Browse styles and apply a look to any prompt." },
 ];
 
 // FAQ grouped by the tabs on the home page. `group` must match one of faqGroups.
@@ -170,21 +89,20 @@ export const faq: { group: string; q: string; a: string }[] = [
   { group: "Privacy & control", q: "How do I restore a purchase?", a: "PLACEHOLDER — describe the restore path inside the app." },
 ];
 
-// 08 / From the blog — links to artlist.io. Descriptions are our own short summaries; article text is not copied.
+// From the blog: plain links to artlist.io, no article text is copied.
 export const blogIndex = "https://artlist.io/blog/";
 export const blog = [
-  { rubric: "AI Tools", title: "Image Generator", text: "Create images from a text prompt. A starting point for AI images.", href: "https://artlist.io/blog/image-generator/" },
-  { rubric: "AI Tools", title: "Video Generator", text: "Turn a text or image prompt into a short video clip.", href: "https://artlist.io/blog/video-generator/" },
-  { rubric: "AI Models", title: "Nano Banana", text: "An image model available in Artlist, with its own guide.", href: "https://artlist.io/blog/nano-banana/" },
-  { rubric: "AI Models", title: "Kling", text: "A video model available in Artlist, with its own guide.", href: "https://artlist.io/blog/kling/" },
-  { rubric: "AI Models", title: "Veo", text: "A video model available in Artlist, with its own guide.", href: "https://artlist.io/blog/veo/" },
-  { rubric: "Learn", title: "Trends and Inspiration", text: "Ideas and examples from people working with AI.", href: "https://artlist.io/blog/trends-and-insights/" },
+  { rubric: "AI Tools", title: "Image Generator", href: "https://artlist.io/blog/image-generator/" },
+  { rubric: "AI Tools", title: "Video Generator", href: "https://artlist.io/blog/video-generator/" },
+  { rubric: "AI Models", title: "Nano Banana", href: "https://artlist.io/blog/nano-banana/" },
+  { rubric: "AI Models", title: "Kling", href: "https://artlist.io/blog/kling/" },
+  { rubric: "AI Models", title: "Veo", href: "https://artlist.io/blog/veo/" },
+  { rubric: "Learn", title: "Trends and Inspiration", href: "https://artlist.io/blog/trends-and-insights/" },
 ];
 
 // Closing block
 export const closing = {
-  title: "Less waiting. More creating.",
-  lead: "Your next clip. Already in motion.",
+  title: "Get Artlist on your iPhone.",
 };
 
 export const specs: [string, string][] = [

@@ -3,222 +3,115 @@ import { FaqTabs } from "../components/Faq";
 import Reveal from "../components/Reveal";
 import Split from "../components/Split";
 import {
-  app, betterWay, blog, blogIndex, closing, flows, hero, modes, platform, plans, showcase, stack,
+  app, blog, blogIndex, closing, features, hero, platform, showcase,
 } from "../content/site";
 import { img } from "../utils/img";
-
-/** Section label in the reference style: "01 / THE PLATFORM". */
-function SecLabel({ num, label }: { num: string; label: string }) {
-  return (
-    <Reveal className="sechead">
-      <span className="sechead__n">{num}</span>
-      <span className="sechead__l">/ {label}</span>
-    </Reveal>
-  );
-}
 
 export default function Home() {
   return (
     <>
-      {/* Hero: centred headline, two overlapping phones (back one more transparent) */}
+      {/* Hero: two overlapping phones, the back one more transparent */}
       <section className="hero">
-        <div className="glow" aria-hidden="true" />
         <div className="container hero__center">
-          <Reveal as="span" className="eyebrow">{hero.eyebrow}</Reveal>
-          <Split as="h1" parts={[["Less blank page."], ["\n"], ["More motion in every frame.", true]]} />
+          <p className="eyebrow">{hero.eyebrow}</p>
+          <Split as="h1" parts={[["Images and short videos"], ["\n"], ["from a prompt."]]} />
           <Reveal as="p" className="lead lead--center" delay={300}>{hero.lead}</Reveal>
           <Reveal className="hero__cta" delay={420}>
             <Btn href={app.url}>Download on the App Store</Btn>
             <Btn to="/app" variant="dark">See the app</Btn>
           </Reveal>
-          <Reveal className="hero__stage" delay={200}>
+          <div className="hero__stage">
             <img className="device device--back" src={img("/images/device-image.webp")} alt="" width={800} height={1635} />
             <img className="device device--front" src={img("/images/device-video.webp")} alt="The app's home screen" width={800} height={1635} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 01 / The platform */}
-      <section className="section" id="platform">
-        <div className="container">
-          <SecLabel num="01" label="The platform" />
-          <Reveal as="h2" className="h2 h2--wide">{platform.title}</Reveal>
-          <div className="grid3">
-            {platform.points.map((p, i) => (
-              <Reveal className="tile" key={p.title} delay={i * 80}>
-                <span className="tile__n">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="h3">{p.title}</h3>
-                <p className="muted">{p.text}</p>
-              </Reveal>
-            ))}
           </div>
-          <Reveal className="panel">
-            <img className="device" src={img("/images/device-library.webp")} alt="The style library screen" width={800} height={1635} loading="lazy" />
-          </Reveal>
         </div>
       </section>
 
-      {/* 02 / A better way to work */}
-      <section className="section">
-        <div className="container">
-          <SecLabel num="02" label="A better way to work" />
-          <Reveal as="h2" className="h2 h2--wide">{betterWay.title}</Reveal>
-          <ol className="rows">
-            {betterWay.rows.map((r, i) => (
-              <Reveal as="li" className="row" key={r.title} delay={(i % 2) * 100}>
-                <span className="row__n">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="h3">{r.title}</h3>
-                <p className="muted">{r.text}</p>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* 03 / Your stack, in sync — centred headline, a dark card with a prompt exchange */}
-      <section className="section section--center">
-        <div className="container">
-          <SecLabel num="03" label="Your stack, in sync" />
-          <Reveal as="h2" className="h2 h2--center">{stack.title}</Reveal>
-          <Reveal as="p" className="lead lead--center">{stack.lead}</Reveal>
-          <Reveal className="stack-card">
-            <div className="stack-card__chat">
-              {stack.chat.map((m) => (
-                <div key={m.text} className={`bubble bubble--${m.who}`}>
-                  <span className="bubble__who">{m.who === "you" ? "You" : "Artlist"}</span>
-                  <p>{m.text}</p>
+      {/* Ways to start, next to the style library screen */}
+      <section className="section" id="platform">
+        <div className="container split-two">
+          <div>
+            <h2 className="h2">{platform.title}</h2>
+            <dl className="specs">
+              {platform.points.map((p) => (
+                <div className="specs__row" key={p.title}>
+                  <dt>{p.title}</dt>
+                  <dd>{p.text}</dd>
                 </div>
               ))}
-            </div>
-            <div className="styles-row" aria-label="Style examples">
-              <img src={img("/images/tile-macro.webp")} alt="Macro style" width={480} height={467} loading="lazy" />
-              <img src={img("/images/tile-popart.webp")} alt="Pop Art style" width={480} height={488} loading="lazy" />
-              <img src={img("/images/tile-ghibli.webp")} alt="Ghibli style" width={480} height={489} loading="lazy" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 04 / Meet the creative modes */}
-      <section className="section">
-        <div className="container">
-          <SecLabel num="04" label="Meet the creative modes" />
-          <Reveal as="h2" className="h2 h2--center">Four modes. One prompt field.</Reveal>
-          <div className="grid2">
-            {modes.map((m, i) => (
-              <Reveal className="mode" key={m.title} delay={(i % 2) * 100}>
-                <span className="eyebrow">{m.label}</span>
-                <h3 className="h3">{m.title}</h3>
-                <p className="muted">{m.text}</p>
-                <div className="mode__ui">
-                  <span className="mode__field">{m.field}</span>
-                  <p>{m.value}</p>
-                </div>
-              </Reveal>
-            ))}
+            </dl>
           </div>
+          <img className="device" src={img("/images/device-library.webp")} alt="The style library screen" width={800} height={1635} loading="lazy" />
         </div>
       </section>
 
-      {/* 05 / Small starts — the flows */}
+      {/* What the app makes: the store's own feature names */}
       <section className="section" id="start">
-        <div className="container">
-          <SecLabel num="05" label="Small starts. Big possibilities." />
-          <Reveal as="h2" className="h2 h2--wide">Start with the clip you have in mind.</Reveal>
-          <div className="grid3">
-            {flows.map((f, i) => (
-              <Reveal className="flow" key={f.title} delay={(i % 3) * 80}>
-                <span className="eyebrow">Flow / {String(i + 1).padStart(2, "0")}</span>
+        <div className="container split-two split-two--narrow">
+          <h2 className="h2">What you can make.</h2>
+          <ul className="rows">
+            {features.map((f) => (
+              <li className="row" key={f.title}>
                 <h3 className="h3">{f.title}</h3>
                 <p className="muted">{f.text}</p>
-              </Reveal>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* 06 / Room to grow — plans come from the App Store, placeholders until then */}
-      <section className="section" id="pricing">
-        <div className="container">
-          <SecLabel num="06" label="Room to grow" />
-          <Reveal as="h2" className="h2 h2--wide">Plans, as listed on the App Store.</Reveal>
-          <Reveal as="p" className="lead">Prices and billing are shown on the App Store listing.</Reveal>
-          <div className="grid3 grid3--plans">
-            {plans.map((p, i) => (
-              <Reveal className="plan" key={i} delay={i * 80}>
-                <span className="eyebrow">{p.name}</span>
-                <div className="plan__price">{p.price}</div>
-                <p className="muted">{p.text}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 07 / Prompts in motion — one real example from the app */}
+      {/* One real example from the preview screen */}
       <section className="section" id="prompts">
-        <div className="container">
-          <SecLabel num="07" label="Prompts in motion" />
-          <Reveal as="h2" className="h2 h2--wide">{showcase.title}</Reveal>
-          <Reveal className="showcase">
-            <div className="showcase__copy">
-              <span className="eyebrow">Prompt</span>
-              <p className="showcase__prompt">{showcase.prompt}</p>
-              <dl className="specs specs--compact">
-                {showcase.settings.map(([k, v]) => (
-                  <div className="specs__row" key={k}>
-                    <dt>{k}</dt>
-                    <dd>{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-            <img className="device" src={img("/images/device-image.webp")} alt="The generation preview screen" width={800} height={1635} loading="lazy" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 08 / From the blog — cards linking to the original articles */}
-      <section className="section" id="blog">
-        <div className="container">
-          <SecLabel num="08" label="From the blog" />
-          <Reveal as="h2" className="h2 h2--wide">Guides and models, from the Artlist blog.</Reveal>
-          <div className="grid3">
-            {blog.map((b, i) => (
-              <Reveal className="blog-card" key={b.title} delay={(i % 3) * 80}>
-                <span className="eyebrow">{b.rubric}</span>
-                <h3 className="h3">{b.title}</h3>
-                <p className="muted">{b.text}</p>
-                <a className="blog-card__link" href={b.href} target="_blank" rel="noopener noreferrer">
-                  Read on artlist.io <span aria-hidden="true">↗</span>
-                </a>
-              </Reveal>
-            ))}
+        <div className="container split-two">
+          <div>
+            <h2 className="h2">{showcase.title}</h2>
+            <p className="showcase__prompt">{showcase.prompt}</p>
+            <dl className="specs">
+              {showcase.settings.map(([k, v]) => (
+                <div className="specs__row" key={k}>
+                  <dt>{k}</dt>
+                  <dd>{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <Reveal as="p" className="small muted blog-more">
-            More articles: <a className="link" href={blogIndex} target="_blank" rel="noopener noreferrer">artlist.io/blog</a>
-          </Reveal>
+          <img className="device" src={img("/images/device-image.webp")} alt="The generation preview screen" width={800} height={1635} loading="lazy" />
         </div>
       </section>
 
-      {/* 09 / A little more clarity */}
+      {/* Blog: plain links to the original articles */}
+      <section className="section" id="blog">
+        <div className="container split-two split-two--narrow">
+          <h2 className="h2">From the Artlist blog.</h2>
+          <div>
+            <ul className="rows">
+              {blog.map((b) => (
+                <li key={b.title}>
+                  <a className="row row--link" href={b.href} target="_blank" rel="noopener noreferrer">
+                    <span className="h3">{b.title}</span>
+                    <span className="muted">{b.rubric} ↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="small muted blog-more">
+              All articles: <a className="link" href={blogIndex} target="_blank" rel="noopener noreferrer">artlist.io/blog</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="section" id="faq">
         <div className="container">
-          <SecLabel num="09" label="A little more clarity" />
-          <Reveal as="h2" className="h2 h2--wide">Answers to the questions that come up most.</Reveal>
+          <h2 className="h2">Questions.</h2>
           <FaqTabs />
         </div>
       </section>
 
-      {/* Closing */}
       <section className="section section--cta">
-        <div className="container">
-          <Reveal className="cta-block">
-            <span className="eyebrow">Less friction. More forward.</span>
-            <h2 className="h2 h2--center">{closing.title}</h2>
-            <p className="lead">{closing.lead}</p>
-            <Btn href={app.url}>Download on the App Store</Btn>
-          </Reveal>
+        <div className="container cta">
+          <h2 className="h2">{closing.title}</h2>
+          <Btn href={app.url}>Download on the App Store</Btn>
         </div>
       </section>
     </>

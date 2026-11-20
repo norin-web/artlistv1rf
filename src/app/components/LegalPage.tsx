@@ -88,7 +88,6 @@ export default function LegalPage({ doc }: { doc: Doc }) {
   return (
     <>
       <section className="lhero">
-        <div className="glow glow--left" aria-hidden="true" />
         <div className="container">
           <Reveal as="span" className="eyebrow lhero__date">
             {doc.updated ?? `Effective ${legalUpdated}`}
@@ -97,12 +96,12 @@ export default function LegalPage({ doc }: { doc: Doc }) {
           <Reveal className="lhero__meta" delay={400}>
             <span>{sections.length} sections</span>
             <a href={`mailto:${site.email}`} className="lhero__chip">{site.email}</a>
-            <Link to={doc.other.to} className="lhero__chip">{doc.other.label} →</Link>
+            <Link to={doc.other.to} className="lhero__chip">{doc.other.label}</Link>
           </Reveal>
         </div>
       </section>
 
-      <section className="legal2 panel">
+      <section className="legal2">
         <div className="container legal2__grid">
           <aside className="legal2__toc" aria-label="Contents">
             <span className="eyebrow">Contents</span>
@@ -137,7 +136,7 @@ export default function LegalPage({ doc }: { doc: Doc }) {
                     </div>
                   ))}
                 </div>
-                <p className="glance__note">A short summary for convenience — the full text below is what applies.</p>
+                <p className="glance__note">A short summary for convenience. The full text below is what applies.</p>
               </Reveal>
             )}
 
@@ -161,7 +160,7 @@ export default function LegalPage({ doc }: { doc: Doc }) {
               <div>
                 <span className="eyebrow">Questions about this document?</span>
                 <p>
-                  Write to <a href={`mailto:${site.email}`}>{site.email}</a> and we'll get back to you.
+                  Write to <a href={`mailto:${site.email}`}>{site.email}</a> and we’ll get back to you.
                 </p>
               </div>
               <Btn to="/contact">Contact us</Btn>

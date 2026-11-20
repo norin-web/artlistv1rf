@@ -7,12 +7,10 @@ export default function Contact() {
   return (
     <>
       <section className="hero hero--page">
-        <div className="glow" aria-hidden="true" />
         <div className="container">
-          <Reveal as="span" className="eyebrow">Contact</Reveal>
-          <Split as="h1" parts={[["Say hello."]]} />
+          <Split as="h1" parts={[["Contact"]]} />
           <Reveal as="p" className="lead" delay={300}>
-            Send a message and we'll reply by email. Or write directly to{" "}
+            Send a message and we’ll reply by email. Or write directly to{" "}
             <a className="link" href={`mailto:${site.email}`}>{site.email}</a>.
           </Reveal>
         </div>
@@ -20,15 +18,12 @@ export default function Contact() {
 
       <section className="section">
         <div className="container split-two split-two--narrow">
-          <div>
-            <Reveal as="span" className="eyebrow">Message</Reveal>
-            <Reveal as="p" className="lead">
-              The form opens your mail app with the message filled in. Nothing is stored on this site.
-            </Reveal>
-          </div>
+          <p className="lead">
+            The form opens your mail app with the message filled in. Nothing is stored on this site.
+          </p>
           <Reveal className="form-card">
             <MailForm
-              subject={`${site.brand} — contact`}
+              subject={`${site.brand} contact`}
               submit="Send message"
               fields={[
                 { name: "name", label: "Name", required: true, auto: "name" },
