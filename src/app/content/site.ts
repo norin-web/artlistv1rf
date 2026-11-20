@@ -13,8 +13,8 @@ export const site = {
 };
 
 export const app = {
-  id: PLACEHOLDER,
-  url: `https://apps.apple.com/app/id${PLACEHOLDER}`,
+  id: "6790780440",
+  url: "https://apps.apple.com/app/id6790780440",
   minIOS: PLACEHOLDER,
   category: PLACEHOLDER,
   languages: PLACEHOLDER,
